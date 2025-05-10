@@ -46,3 +46,6 @@ Thumbs.db
 # Optional: Uncomment if you don’t use these
 # ProjectSettings/
 # Packages/
+
+# VS
+.vs/

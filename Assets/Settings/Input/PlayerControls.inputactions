@@ -6,7 +6,7 @@
             "id": "6ae13c84-4434-4455-984d-7564f2f35192",
             "actions": [
                 {
-                    "name": "Rolling",
+                    "name": "RollClockwise",
                     "type": "Button",
                     "id": "5e573362-1a28-484c-97e8-aa852a17212a",
                     "expectedControlType": "Button",
@@ -15,12 +15,30 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Jumping",
+                    "name": "RollCounterClockwise",
+                    "type": "Button",
+                    "id": "15312b03-425e-4c4d-81bc-23bd2178e2c2",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Jump",
                     "type": "Button",
                     "id": "215de684-4725-4f1f-a951-ca0dfa965429",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": "Press,Hold,Press(behavior=1)",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Charge",
+                    "type": "Button",
+                    "id": "bcbf9ecd-53ac-49bd-b722-4e90b60939f3",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
                     "initialStateCheck": false
                 }
             ],
@@ -28,22 +46,11 @@
                 {
                     "name": "",
                     "id": "6b3d7337-ff30-44ef-8b37-4d60b7f8889e",
-                    "path": "<Keyboard>/leftArrow",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Rolling",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "ff450798-57bf-4387-b0fc-f8992d5be549",
                     "path": "<Keyboard>/rightArrow",
-                    "interactions": "",
+                    "interactions": "Hold(duration=0.1,pressPoint=0.1)",
                     "processors": "",
                     "groups": "",
-                    "action": "Rolling",
+                    "action": "RollClockwise",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -51,10 +58,32 @@
                     "name": "",
                     "id": "ae48a4f9-1947-4b6a-b730-abf46bf51ea5",
                     "path": "<Keyboard>/space",
-                    "interactions": "",
+                    "interactions": "Press(behavior=1)",
                     "processors": "",
                     "groups": "",
-                    "action": "Jumping",
+                    "action": "Jump",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "224d012c-0b53-4786-8db1-71893f47103d",
+                    "path": "<Keyboard>/space",
+                    "interactions": "Hold",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Charge",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "6be494d8-056d-499c-b693-d08e1588a19b",
+                    "path": "<Keyboard>/leftArrow",
+                    "interactions": "Hold(duration=0.1,pressPoint=0.1)",
+                    "processors": "",
+                    "groups": "",
+                    "action": "RollCounterClockwise",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

@@ -14,6 +14,10 @@ public class Movements : MonoBehaviour
     [SerializeField] private float spacebarDampingFactor  = 100f;
     [SerializeField] private float jumpThreshold = 1f;
 
+    [SerializeField] private LayerMask planetLayer;
+    [SerializeField] private float planetDetectRange = 50f;
+    [SerializeField] private float groundCheckDistance = 0.05f;
+
     private float chargeTime = 0f;
     private bool isCharging = false;
     private float moveInput = 0f;
@@ -60,11 +64,19 @@ public class Movements : MonoBehaviour
 
     private void Jump()
     {
+        Transform nearestPlanet = GetNearestPlanet();
+        
         isCharging = false;
+
+        if (nearestPlanet == null || !IsGrounded(nearestPlanet)) return;
+
         float t = Mathf.Clamp(chargeTime / maxChargeTime, 0f, 1f);
         float actualForce = Mathf.Lerp(3f, jumpForce, t);
-        if (rb.angularVelocity < jumpThreshold) {
-            rb.AddForce(Vector2.up * actualForce, ForceMode2D.Impulse);
+        Vector2 jumpDirection = (transform.position - nearestPlanet.position).normalized;
+
+        if (rb.angularVelocity < jumpThreshold)
+        {
+            rb.AddForce(jumpDirection * actualForce, ForceMode2D.Impulse);
         }
     }
 
@@ -79,6 +91,37 @@ public class Movements : MonoBehaviour
         rb.angularVelocity = Mathf.Lerp(rb.angularVelocity, 0f, Time.fixedDeltaTime * dampingFactor);
     }
 
+    private Transform GetNearestPlanet()
+    {
+        Collider2D[] planets = Physics2D.OverlapCircleAll(transform.position, planetDetectRange, planetLayer);
+        Transform nearest = null;
+        float minDistance = float.MaxValue;
+
+        foreach (Collider2D planet in planets)
+        {
+            float dist = Vector2.Distance(transform.position, planet.transform.position);
+            if (dist < minDistance)
+            {
+                minDistance = dist;
+                nearest = planet.transform;
+            }
+        }
+
+        return nearest;
+    }
+
+    private bool IsGrounded(Transform planet)
+    {
+        Vector2 directionToPlanet = (planet.position - transform.position).normalized;
+        CircleCollider2D circle;
+
+        if (!TryGetComponent<CircleCollider2D>(out circle)) throw new MissingComponentException();
+
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, directionToPlanet, circle.radius + groundCheckDistance, planetLayer);
+
+        Debug.DrawRay(transform.position, directionToPlanet * planetDetectRange, Color.green);
+        return hit.collider != null;
+    }
 
     private void OnDisable()
 	{

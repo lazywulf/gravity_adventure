@@ -4,19 +4,29 @@ using UnityEngine;
 
 public class GravPad : GravForce
 {
-	[SerializeField] Vector2 gravity = new();
 	[SerializeField] ForceMode2D mode = ForceMode2D.Force;
-	[SerializeField] bool UseAutoCheeseGravity=false;
-    private void Start()
+	[SerializeField] bool useAutoDirection=false;
+    [SerializeField] float gravityScale = 1f;
+    [SerializeField] float gravityDirection;
+    [SerializeField] public bool gravityEnable= true;
+
+    void Awake()
     {
-        if (UseAutoCheeseGravity) ChooseDirection();
+        if (useAutoDirection) AutoDirection();
     }
     public override void ApplyGravitationalForce(Rigidbody2D rb) {
-		rb.AddForce(gravity, mode);
+        Vector2 addGravity=Vector2.zero;
+        if (gravityEnable) addGravity = TransformToVector(gravityDirection) * gravityScale;
+        Debug.Log(TransformToVector(gravityDirection) * gravityScale);
+        rb.AddForce(addGravity, mode);
 	}
-	public void ChooseDirection()
+	public Vector2 TransformToVector(float direction)
 	{
-        float rad = (transform.eulerAngles.z+90) * Mathf.Deg2Rad;
-        gravity = new Vector2(Mathf.Cos(rad), Mathf.Sin(rad));
+        float rad =  direction* Mathf.Deg2Rad;
+        return new Vector2(Mathf.Cos(rad), Mathf.Sin(rad));
+    }
+    public void AutoDirection()
+    {
+        gravityDirection= (transform.eulerAngles.z + 90);
     }
 }

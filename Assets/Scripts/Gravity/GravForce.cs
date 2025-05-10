@@ -6,7 +6,6 @@ public abstract class GravForce : MonoBehaviour
 {
     protected Rigidbody2D rb;
     protected Collider2D col;
-
     void Start() 
     {
         if (!(TryGetComponent<Rigidbody2D>(out rb) && TryGetComponent<Collider2D>(out col))) {
@@ -20,4 +19,5 @@ public abstract class GravForce : MonoBehaviour
 	}
 
 	public abstract void ApplyGravitationalForce(Rigidbody2D rb);
+
 }

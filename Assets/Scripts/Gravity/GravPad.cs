@@ -19,7 +19,6 @@ public class GravPad : GravForce
 
         if (usePointingDirOrigin) gravityDirection = (transform.eulerAngles.z + 90);
         if (enableGravity) force = TransformToVector(gravityDirection) * gravityScale;
-        Debug.Log(TransformToVector(gravityDirection) * gravityScale);
         rb.AddForce(force, mode);
 	}
 

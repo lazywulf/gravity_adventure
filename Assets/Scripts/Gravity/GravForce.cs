@@ -8,7 +8,7 @@ public abstract class GravForce : MonoBehaviour
     protected Collider2D col;
     protected HashSet<Rigidbody2D> trackedBodies = new();
 
-    void Start() 
+    void Awake() 
     {
         if (!(TryGetComponent<Rigidbody2D>(out rb) && TryGetComponent<Collider2D>(out col))) {
             Debug.LogWarning($"{gameObject.name} is missing Rigidbody or Collider. Disabling GravForce.");

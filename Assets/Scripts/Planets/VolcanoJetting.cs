@@ -1,4 +1,3 @@
-// VolcanoJetting.cs
 using System.Collections;
 using UnityEngine;
 enum State{

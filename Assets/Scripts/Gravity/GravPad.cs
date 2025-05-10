@@ -4,29 +4,29 @@ using UnityEngine;
 
 public class GravPad : GravForce
 {
-	[SerializeField] ForceMode2D mode = ForceMode2D.Force;
-	[SerializeField] bool useAutoDirection=false;
-    [SerializeField] float gravityScale = 1f;
-    [SerializeField] float gravityDirection;
-    [SerializeField] public bool gravityEnable= true;
-
-    void Awake()
-    {
-        if (useAutoDirection) AutoDirection();
+    [SerializeField] private ForceMode2D mode = ForceMode2D.Force;
+    [SerializeField] private bool usePointingDirOrigin = false;
+    [SerializeField] private bool enableGravity = true;
+    [SerializeField] private float gravityScale = 1f;
+    [SerializeField] private float gravityDirection;
+    public bool GravOn {
+        get { return enableGravity; }
+        set { enableGravity = value; }
     }
-    public override void ApplyGravitationalForce(Rigidbody2D rb) {
-        Vector2 addGravity=Vector2.zero;
-        if (gravityEnable) addGravity = TransformToVector(gravityDirection) * gravityScale;
+
+    protected override void ApplyGravitationalForce(Rigidbody2D rb) {
+        Vector2 force = Vector2.zero;
+
+        if (usePointingDirOrigin) gravityDirection = (transform.eulerAngles.z + 90);
+        if (enableGravity) force = TransformToVector(gravityDirection) * gravityScale;
         Debug.Log(TransformToVector(gravityDirection) * gravityScale);
-        rb.AddForce(addGravity, mode);
+        rb.AddForce(force, mode);
 	}
-	public Vector2 TransformToVector(float direction)
+
+	private  Vector2 TransformToVector(float direction)
 	{
-        float rad =  direction* Mathf.Deg2Rad;
+        float rad = direction* Mathf.Deg2Rad;
         return new Vector2(Mathf.Cos(rad), Mathf.Sin(rad));
     }
-    public void AutoDirection()
-    {
-        gravityDirection= (transform.eulerAngles.z + 90);
-    }
+
 }

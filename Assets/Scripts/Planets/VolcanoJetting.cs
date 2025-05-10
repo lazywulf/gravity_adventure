@@ -1,7 +1,7 @@
 // VolcanoJetting.cs
 using System.Collections;
 using UnityEngine;
-enum state{
+enum State{
     waiting,
     Jetting,
     Cooldown
@@ -11,12 +11,24 @@ public class VolcanoJetting : MonoBehaviour
     [SerializeField] private float jetDuration = 2f;
     [SerializeField] private float jetCooldown = 5f;
     [SerializeField] private float jetOffset = 0f;
-    [SerializeField] private state currentState = state.waiting;
+    [SerializeField] private State currentState = State.waiting;
+
+    private GravPad gp;
     private float remainedTime;
-    private void Start()
+
+	private void Awake()
+	{
+        if (!TryGetComponent<GravPad>(out gp)) {
+            enabled = false;
+            throw new MissingComponentException("Missing GravPad");
+        }
+    }
+
+	private void Start()
     {
         remainedTime = jetOffset;
     }
+
     private void Update()
     {
         remainedTime -= Time.deltaTime;
@@ -24,25 +36,18 @@ public class VolcanoJetting : MonoBehaviour
         {
             TransformState();
         }
-        if(currentState == state.Jetting)
-        {
-            this.gameObject.GetComponent<GravPad>().gravityEnable = true;
-        }
-        else
-        {
-            this.gameObject.GetComponent<GravPad>().gravityEnable = false;
-        }
+        gp.GravOn = (currentState == State.Jetting);
     }
     private void TransformState()
     {
-        if(currentState == state.Jetting)
+        if(currentState == State.Jetting)
         {
-            currentState = state.Cooldown;
+            currentState = State.Cooldown;
             remainedTime = jetCooldown;
         }
         else
         {
-            currentState = state.Jetting;
+            currentState = State.Jetting;
             remainedTime = jetDuration;
         }
     }

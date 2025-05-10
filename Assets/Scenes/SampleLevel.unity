@@ -874,7 +874,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3834055099235821178, guid: e6f385bf3ca9ce446820ee75accf1a38, type: 3}
       propertyPath: jumpForce
-      value: 10
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 3834055099235821178, guid: e6f385bf3ca9ce446820ee75accf1a38, type: 3}
       propertyPath: planetLayer.m_Bits

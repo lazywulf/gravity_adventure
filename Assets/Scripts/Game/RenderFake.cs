@@ -44,17 +44,17 @@ public class RenderFake : MonoBehaviour
     {
         GameObject clone = Instantiate(original, newPos, original.transform.rotation);
 
-        foreach (var col in clone.GetComponents<Collider2D>())
-            Destroy(col);
+        //foreach (var col in clone.GetComponents<Collider2D>())
+        //    Destroy(col);
 
-        foreach (var rb in clone.GetComponents<Rigidbody2D>())
-            Destroy(rb);
+        //foreach (var rb in clone.GetComponents<Rigidbody2D>())
+        //    Destroy(rb);
 
-        foreach (var comp in clone.GetComponents<MonoBehaviour>())
-        {
-            if (!(comp is SpriteRenderer))
-                Destroy(comp);
-        }
+        //foreach (var comp in clone.GetComponents<MonoBehaviour>())
+        //{
+        //    if (!(comp is SpriteRenderer))
+        //        Destroy(comp);
+        //}
 
         clone.name = original.name + "_Fake";
         clone.transform.SetParent(original.transform);

@@ -8,6 +8,10 @@ public class BorderManager : MonoBehaviour
     private Transform right;
     private float centerX;
 
+    public float LeftLimit => left.position.x;
+    public float RightLimit => right.position.x;
+
+
     private void Awake()
     {
         if (Instance != null && Instance != this)

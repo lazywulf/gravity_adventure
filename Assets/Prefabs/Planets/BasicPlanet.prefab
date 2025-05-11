@@ -132,7 +132,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dfd0bb32a1fa5444e9f3e19072d3bddc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mass: 2
+  mass: 5
   useThresholdBoundary: 0
   gravLowBound: 0.05
 --- !u!50 &5028479482616797714

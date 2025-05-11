@@ -258,7 +258,7 @@ MonoBehaviour:
   appleSpinSpeed: 50
   planetRotationSpeed: 3
   transitionDelay: 1
-  nextSceneName: MainScene
+  nextSceneName: SelectLevel
 --- !u!4 &178789346
 Transform:
   m_ObjectHideFlags: 0

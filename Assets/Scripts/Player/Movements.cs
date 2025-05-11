@@ -75,7 +75,7 @@ public class Movements : MonoBehaviour
     private void hitGround()
     {
         Transform nearestPlanet = GetNearestPlanet();
-        if (IsGrounded(nearestPlanet))
+        if (nearestPlanet != null && IsGrounded(nearestPlanet))
         {
             if (isFlying)
             {

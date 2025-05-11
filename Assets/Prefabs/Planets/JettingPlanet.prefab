@@ -430,6 +430,14 @@ PrefabInstance:
       propertyPath: mode
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2817357305219938109, guid: f9a1d4445074fd749b2fd7520ad3f4d6, type: 3}
+      propertyPath: InitialModule.gravityModifier.scalar
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2817357305219938109, guid: f9a1d4445074fd749b2fd7520ad3f4d6, type: 3}
+      propertyPath: InitialModule.gravityModifier.minMaxState
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2932315267289780688, guid: f9a1d4445074fd749b2fd7520ad3f4d6, type: 3}
       propertyPath: m_SortingOrder
       value: 2
@@ -526,6 +534,14 @@ PrefabInstance:
       propertyPath: mode
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4820637965468957779, guid: f9a1d4445074fd749b2fd7520ad3f4d6, type: 3}
+      propertyPath: InitialModule.gravityModifier.scalar
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4820637965468957779, guid: f9a1d4445074fd749b2fd7520ad3f4d6, type: 3}
+      propertyPath: InitialModule.gravityModifier.minMaxState
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4822810608106103298, guid: f9a1d4445074fd749b2fd7520ad3f4d6, type: 3}
       propertyPath: m_SortingOrder
       value: 2
@@ -609,6 +625,14 @@ PrefabInstance:
     - target: {fileID: 8689836149023294282, guid: f9a1d4445074fd749b2fd7520ad3f4d6, type: 3}
       propertyPath: mode
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8939347400351147031, guid: f9a1d4445074fd749b2fd7520ad3f4d6, type: 3}
+      propertyPath: InitialModule.gravityModifier.scalar
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8939347400351147031, guid: f9a1d4445074fd749b2fd7520ad3f4d6, type: 3}
+      propertyPath: InitialModule.gravityModifier.minMaxState
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

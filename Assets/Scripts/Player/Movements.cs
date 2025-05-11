@@ -102,8 +102,9 @@ public class Movements : MonoBehaviour
         isCharging = false;
 
         if (nearestPlanet == null || !IsGrounded(nearestPlanet)) return;
-
-        float t = Mathf.Clamp(chargeTime / maxChargeTime, 0f, 1f);
+        float overchargeTime = Mathf.Max(0f, chargeTime - maxChargeTime);
+        float t = Mathf.Clamp(chargeTime / maxChargeTime, 0f, 1f) - Mathf.Clamp(overchargeTime / maxChargeTime, 0f, 0.3f);
+        Debug.Log(t);
         float actualForce = Mathf.Lerp(3f, jumpForce, t);
         Vector2 jumpDirection = (transform.position - nearestPlanet.position).normalized;
 

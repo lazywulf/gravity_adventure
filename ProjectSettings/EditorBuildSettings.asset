@@ -26,5 +26,14 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/ending_animation.unity
     guid: 46df40b09896a16419e9d755d30828bd
+  - enabled: 1
+    path: Assets/Scenes/Level 3.unity
+    guid: 18785ad1120771d4dbd0df37753891a7
+  - enabled: 1
+    path: Assets/Scenes/Level 4.unity
+    guid: a021efbed09027b40881aed1c5ff588c
+  - enabled: 1
+    path: Assets/Scenes/Level 5.unity
+    guid: 219ff85d76e6d9c4a9ce0f8cbab86955
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 007d5060fd0634d49adf949e29b9d644, type: 2}

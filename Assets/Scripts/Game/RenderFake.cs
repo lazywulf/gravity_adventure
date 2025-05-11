@@ -7,6 +7,7 @@ public class RenderFake : MonoBehaviour
 
     private readonly List<GameObject> fakePlanets = new List<GameObject>();
     private float worldWidth;
+    private bool initialized = false;
 
     private void Awake()
     {
@@ -22,6 +23,9 @@ public class RenderFake : MonoBehaviour
 
     private void Start()
     {
+        if (initialized) return;
+        initialized = true;
+
         if (BorderManager.Instance == null)
         {
             Debug.LogError("BorderManager instance not found.");
@@ -33,6 +37,9 @@ public class RenderFake : MonoBehaviour
         GameObject[] planets = GameObject.FindGameObjectsWithTag("Planet");
         foreach (GameObject planet in planets)
         {
+            // 防止複製已經是 clone 的物件
+            if (planet.name.Contains("_Fake")) continue;
+
             Vector3 pos = planet.transform.position;
 
             fakePlanets.Add(CreateVisualClone(planet, pos + Vector3.left * worldWidth));
@@ -44,20 +51,23 @@ public class RenderFake : MonoBehaviour
     {
         GameObject clone = Instantiate(original, newPos, original.transform.rotation);
 
-        //foreach (var col in clone.GetComponents<Collider2D>())
-        //    Destroy(col);
-
-        //foreach (var rb in clone.GetComponents<Rigidbody2D>())
-        //    Destroy(rb);
-
-        //foreach (var comp in clone.GetComponents<MonoBehaviour>())
-        //{
-        //    if (!(comp is SpriteRenderer))
-        //        Destroy(comp);
-        //}
-
+        // 移除 clone 的 tag 避免再被偵測為 Planet
+        clone.tag = "Untagged";
         clone.name = original.name + "_Fake";
         clone.transform.SetParent(original.transform);
+
+        // 如有需要，也可在這裡移除不必要的元件（可取消註解）
+        // foreach (var col in clone.GetComponents<Collider2D>())
+        //     Destroy(col);
+
+        // foreach (var rb in clone.GetComponents<Rigidbody2D>())
+        //     Destroy(rb);
+
+        // foreach (var comp in clone.GetComponents<MonoBehaviour>())
+        // {
+        //     if (!(comp is SpriteRenderer))
+        //         Destroy(comp);
+        // }
 
         return clone;
     }

@@ -20,7 +20,6 @@ public class MusicManager : MonoBehaviour
         if (_instance == null)
         {
             _instance = this;
-            DontDestroyOnLoad(gameObject);
 
             _audioSource = GetComponent<AudioSource>();
             _audioSource.volume = 0f;          // 起始先設為靜音

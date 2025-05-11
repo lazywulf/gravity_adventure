@@ -29,7 +29,6 @@ public class Movements : MonoBehaviour
     [SerializeField] private AudioClip jumpSfx;
     [SerializeField] private AudioClip chargeSfx;
     [SerializeField] private AudioClip fallToGroundSfx;
-    [SerializeField] private AudioClip movingOnRockSfx;
     [SerializeField] private AudioSource _audioSource;
 
     void Awake()

@@ -24,13 +24,23 @@ public class Movements : MonoBehaviour
 
     [SerializeField] PlayerControls controls;
 
-	void Awake()
+    [SerializeField] private bool isFlying = false;
+
+    [SerializeField] private AudioClip jumpSfx;
+    [SerializeField] private AudioClip chargeSfx;
+    [SerializeField] private AudioClip fallToGroundSfx;
+    [SerializeField] private AudioClip movingOnRockSfx;
+    [SerializeField] private AudioSource _audioSource;
+
+    void Awake()
     {
         if (!(TryGetComponent<Rigidbody2D>(out rb) && TryGetComponent<Collider2D>(out col)))
         {
             Debug.LogError("Missing Rigidbody or Collider.");
             enabled = false;
         }
+
+        _audioSource = GetComponent<AudioSource>();
 
         controls = new();
         controls.gameplay.RollClockwise.performed += ctx => moveInput = 1f;
@@ -40,6 +50,8 @@ public class Movements : MonoBehaviour
 
         controls.gameplay.Jump.performed += ctx => Jump();
         controls.gameplay.Charge.performed += ctx => Charge();
+
+
     }
 
 	void OnEnable() {
@@ -49,10 +61,32 @@ public class Movements : MonoBehaviour
 	void FixedUpdate()
     {
         Roll();
+        hitGround();
         if (isCharging)
         {
             chargeTime += Time.fixedDeltaTime;
             ApplyAngularDamping(spacebarDampingFactor);
+
+            if (jumpSfx != null)
+                _audioSource.PlayOneShot(jumpSfx);
+
+        }
+    }
+    private void hitGround()
+    {
+        Transform nearestPlanet = GetNearestPlanet();
+        if (IsGrounded(nearestPlanet))
+        {
+            if (isFlying)
+            {
+                if (fallToGroundSfx != null)
+                    _audioSource.PlayOneShot(fallToGroundSfx, 3.0f);
+                isFlying = false;
+            }
+        }
+        else
+        {
+            isFlying = true;
         }
     }
 
@@ -77,6 +111,8 @@ public class Movements : MonoBehaviour
         if (rb.angularVelocity < jumpThreshold)
         {
             rb.AddForce(jumpDirection * actualForce, ForceMode2D.Impulse);
+            if (chargeSfx != null)
+                _audioSource.PlayOneShot(chargeSfx);
         }
     }
 

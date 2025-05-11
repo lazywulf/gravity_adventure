@@ -20,7 +20,7 @@ public class BorderManager : MonoBehaviour
             return;
         }
 
-        DontDestroyOnLoad(this.gameObject);
+        //DontDestroyOnLoad(this.gameObject);
         Instance = this;
 
         left = transform.Find("Left");

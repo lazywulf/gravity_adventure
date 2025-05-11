@@ -17,7 +17,7 @@ public class RenderFake : MonoBehaviour
             return;
         }
 
-        DontDestroyOnLoad(this.gameObject);
+        //DontDestroyOnLoad(this.gameObject);
         Instance = this;
         fakePool = new();
         fakePool.name = "Fake Object Pool";

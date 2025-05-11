@@ -1,7 +1,8 @@
 using System.Collections;
 using UnityEngine;
-enum State{
-    waiting,
+public enum VolcanoState
+{
+    Waiting,
     Jetting,
     Cooldown
 }
@@ -10,7 +11,7 @@ public class VolcanoJetting : MonoBehaviour
     [SerializeField] private float jetDuration = 2f;
     [SerializeField] private float jetCooldown = 5f;
     [SerializeField] private float jetOffset = 0f;
-    [SerializeField] private State currentState = State.waiting;
+    [SerializeField] private VolcanoState currentState = VolcanoState.Waiting;
 
     [SerializeField] private Transform playerTransform;
 
@@ -19,6 +20,10 @@ public class VolcanoJetting : MonoBehaviour
 
     private GravPad gp;
     private float remainedTime;
+
+    public VolcanoState State {
+        get { return currentState; }
+        private set { } }
 
 	private void Awake()
 	{
@@ -61,18 +66,18 @@ public class VolcanoJetting : MonoBehaviour
         {
             TransformState();
         }
-        gp.GravOn = (currentState == State.Jetting);
+        gp.GravOn = (currentState == VolcanoState.Jetting);
     }
     private void TransformState()
     {
-        if(currentState == State.Jetting)
+        if(currentState == VolcanoState.Jetting)
         {
-            currentState = State.Cooldown;
+            currentState = VolcanoState.Cooldown;
             remainedTime = jetCooldown;
         }
         else
         {
-            currentState = State.Jetting;
+            currentState = VolcanoState.Jetting;
             remainedTime = jetDuration;
             playJetSfx();
 

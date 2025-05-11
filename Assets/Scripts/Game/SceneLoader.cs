@@ -3,7 +3,6 @@ using UnityEngine.SceneManagement;
 
 public class SceneLoader : MonoBehaviour
 {
-    // 這個方法會被 Button 的 OnClick 呼叫
     public void LoadSceneByName(string sceneName)
     {
         if (string.IsNullOrEmpty(sceneName))

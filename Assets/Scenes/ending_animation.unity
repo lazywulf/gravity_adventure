@@ -383,7 +383,7 @@ MonoBehaviour:
   finalLine: {fileID: 969116988}
   transitionDelay: 2
   endSceneDelay: 3
-  nextSceneName: TitleScene
+  nextSceneName: SelectLevel
 --- !u!4 &246281361
 Transform:
   m_ObjectHideFlags: 0

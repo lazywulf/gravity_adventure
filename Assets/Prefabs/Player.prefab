@@ -137,15 +137,16 @@ MonoBehaviour:
   maxChargeTime: 2
   spacebarDampingFactor: 100
   jumpThreshold: 1
+  maxAngularVelocity: 1000
   planetLayer:
     serializedVersion: 2
     m_Bits: 0
   planetDetectRange: 50
   groundCheckDistance: 0.05
+  isFlying: 0
   jumpSfx: {fileID: 8300000, guid: 7c8c1de5284809a44a4ced78de96d63d, type: 3}
   chargeSfx: {fileID: 8300000, guid: 056ea8fc5a67d854e984590f9e5880a7, type: 3}
   fallToGroundSfx: {fileID: 8300000, guid: 26681cc27ffa8b54ba1fdd12c0d31e42, type: 3}
-  movingOnRockSfx: {fileID: 0}
   _audioSource: {fileID: 2971349723116000522}
 --- !u!58 &1166467449442809720
 CircleCollider2D:

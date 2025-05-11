@@ -7,6 +7,7 @@ public class RenderFake : MonoBehaviour
 
     private readonly List<GameObject> fakePlanets = new List<GameObject>();
     private float worldWidth;
+    private GameObject fakePool;
 
     private void Awake()
     {
@@ -18,6 +19,8 @@ public class RenderFake : MonoBehaviour
 
         DontDestroyOnLoad(this.gameObject);
         Instance = this;
+        fakePool = new();
+        fakePool.name = "Fake Object Pool";
     }
 
     private void Start()
@@ -30,9 +33,11 @@ public class RenderFake : MonoBehaviour
 
         worldWidth = Mathf.Abs(BorderManager.Instance.RightLimit - BorderManager.Instance.LeftLimit);
 
+
         GameObject[] planets = GameObject.FindGameObjectsWithTag("Planet");
         foreach (GameObject planet in planets)
         {
+
             Vector3 pos = planet.transform.position;
 
             fakePlanets.Add(CreateVisualClone(planet, pos + Vector3.left * worldWidth));
@@ -57,8 +62,14 @@ public class RenderFake : MonoBehaviour
         //}
 
         clone.name = original.name + "_Fake";
-        clone.transform.SetParent(original.transform);
+        clone.tag = "Untagged";
+        clone.transform.SetParent(fakePool.transform);
 
         return clone;
+    }
+
+    private void OnDisable()
+    {
+        Destroy(fakePool);
     }
 }

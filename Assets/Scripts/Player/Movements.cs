@@ -13,7 +13,7 @@ public class Movements : MonoBehaviour
     [SerializeField] private float maxChargeTime = 2f;
     [SerializeField] private float spacebarDampingFactor  = 100f;
     [SerializeField] private float jumpThreshold = 1f;
-
+    [SerializeField] private float maxAngularVelocity = 1000f;
     [SerializeField] private LayerMask planetLayer;
     [SerializeField] private float planetDetectRange = 50f;
     [SerializeField] private float groundCheckDistance = 0.05f;
@@ -84,7 +84,7 @@ public class Movements : MonoBehaviour
     {
         float chargeMultiplier = isCharging ? 0f : 1f;
         float torqueAmount = -moveInput * torque * chargeMultiplier;
-        rb.AddTorque(torqueAmount);
+        if(Mathf.Abs(rb.angularVelocity)<maxAngularVelocity)rb.AddTorque(torqueAmount);
 	}
 
     private void ApplyAngularDamping(float dampingFactor) {

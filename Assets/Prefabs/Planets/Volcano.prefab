@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 93838047578542294}
   - component: {fileID: 7621930471529046101}
   - component: {fileID: 8689836149023294282}
+  - component: {fileID: 6459098596576380435}
   - component: {fileID: 1130920234700548125}
   - component: {fileID: 1260108088428181335}
   - component: {fileID: 3413009927917702554}
@@ -105,6 +106,7 @@ MonoBehaviour:
   jetCooldown: 5
   jetOffset: 0
   currentState: 0
+  playerTransform: {fileID: 0}
   jetSfx: {fileID: 8300000, guid: 12e9fd43710cdb14cb293806e3f2c355, type: 3}
   _audioSource: {fileID: 3413009927917702554}
 --- !u!114 &8689836149023294282
@@ -124,6 +126,19 @@ MonoBehaviour:
   enableGravity: 1
   gravityScale: 1
   gravityDirection: 0
+--- !u!114 &6459098596576380435
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 507734048512838902}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 387797021306a5b49b8a85e78a8094cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  eruptionParticles: {fileID: 0}
 --- !u!61 &1130920234700548125
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -304,6 +319,7 @@ GameObject:
   - component: {fileID: 4822810608106103298}
   - component: {fileID: 785744747098709135}
   - component: {fileID: 4721041851139743401}
+  - component: {fileID: 7262694729761230374}
   - component: {fileID: 2976326506307776317}
   - component: {fileID: 167761345981859380}
   - component: {fileID: 5782847575183201205}
@@ -397,6 +413,7 @@ MonoBehaviour:
   jetCooldown: 5
   jetOffset: 0
   currentState: 0
+  playerTransform: {fileID: 0}
   jetSfx: {fileID: 8300000, guid: 12e9fd43710cdb14cb293806e3f2c355, type: 3}
   _audioSource: {fileID: 5782847575183201205}
 --- !u!114 &4721041851139743401
@@ -416,6 +433,19 @@ MonoBehaviour:
   enableGravity: 1
   gravityScale: 1
   gravityDirection: 0
+--- !u!114 &7262694729761230374
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1754756649207847686}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 387797021306a5b49b8a85e78a8094cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  eruptionParticles: {fileID: 0}
 --- !u!61 &2976326506307776317
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -596,6 +626,7 @@ GameObject:
   - component: {fileID: 2932315267289780688}
   - component: {fileID: 8581621760180490504}
   - component: {fileID: 2391407573941007584}
+  - component: {fileID: 369289594657709049}
   - component: {fileID: 1881905275352602362}
   - component: {fileID: 5784399181306636084}
   - component: {fileID: 146561755736509429}
@@ -689,6 +720,7 @@ MonoBehaviour:
   jetCooldown: 5
   jetOffset: 0
   currentState: 0
+  playerTransform: {fileID: 0}
   jetSfx: {fileID: 8300000, guid: 12e9fd43710cdb14cb293806e3f2c355, type: 3}
   _audioSource: {fileID: 146561755736509429}
 --- !u!114 &2391407573941007584
@@ -708,6 +740,19 @@ MonoBehaviour:
   enableGravity: 1
   gravityScale: 1
   gravityDirection: 0
+--- !u!114 &369289594657709049
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2795782661903378306}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 387797021306a5b49b8a85e78a8094cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  eruptionParticles: {fileID: 0}
 --- !u!61 &1881905275352602362
 BoxCollider2D:
   m_ObjectHideFlags: 0

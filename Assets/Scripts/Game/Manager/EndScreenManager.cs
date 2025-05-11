@@ -23,7 +23,7 @@ public class EndScreenManager : MonoBehaviour
     [Header("Setting")]
     public float transitionDelay = 2f;
     public float endSceneDelay = 3f;
-    public string nextSceneName = "TitleScene";
+    public string nextSceneName = "SelectLevel";
 
     private bool switched = false;
     private bool collided = false;
@@ -59,6 +59,9 @@ public class EndScreenManager : MonoBehaviour
                 StartCoroutine(ShowFinalLine());
             }
         }
+
+
+        
     }
 
     IEnumerator SwitchToPhase2()

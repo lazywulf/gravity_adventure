@@ -7,7 +7,7 @@ public class SceneLoader : MonoBehaviour
     {
         if (string.IsNullOrEmpty(sceneName))
         {
-            Debug.LogError("場景名稱不可為空！");
+            Debug.LogError("scence cant be empty");
             return;
         }
         SceneManager.LoadScene(sceneName);

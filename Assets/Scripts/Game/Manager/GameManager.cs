@@ -53,16 +53,18 @@ public class GameManager : MonoBehaviour
     }
 
     public void GameOver() {
-
         Debug.Log("Blasted by a supernova.");
+        RestartLevel();
     }
 
     public void Blackhole() {
         Debug.Log("Eaten by a black hole.");
+        RestartLevel();
     }
 
     public void WinGame() {
         Debug.Log("You win!");
+        SceneManager.LoadScene("ending_animation");
     }
 
 }

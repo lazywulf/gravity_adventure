@@ -12,6 +12,11 @@ public class VolcanoJetting : MonoBehaviour
     [SerializeField] private float jetOffset = 0f;
     [SerializeField] private State currentState = State.waiting;
 
+    [SerializeField] private Transform playerTransform;
+
+    [SerializeField] private AudioClip jetSfx;
+    [SerializeField] private AudioSource _audioSource;
+
     private GravPad gp;
     private float remainedTime;
 
@@ -21,6 +26,27 @@ public class VolcanoJetting : MonoBehaviour
             enabled = false;
             throw new MissingComponentException("Missing GravPad");
         }
+        playerTransform = GameObject.Find("Player").transform;
+    }
+
+    private void playJetSfx()
+    {
+        float distance = Vector2.Distance(transform.position, playerTransform.position);
+        if(jetSfx != null)
+        {
+
+            float volumn = 0.0f;
+            if (distance < 10.0f)
+            {
+                volumn = 0.05f;
+            }
+            else if (distance < 5.0f)
+            {
+                volumn = 0.025f;
+            }
+            _audioSource.PlayOneShot(jetSfx, volumn);
+        }
+
     }
 
 	private void Start()
@@ -48,6 +74,8 @@ public class VolcanoJetting : MonoBehaviour
         {
             currentState = State.Jetting;
             remainedTime = jetDuration;
+            playJetSfx();
+
         }
     }
 }
